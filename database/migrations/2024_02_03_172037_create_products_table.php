@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->comment("ชื่อสินค้า");
             $table->string('price')->comment("ราคาสินค้า");
-            $table->text('desciption')->comment("รายละเอียดสินค้า");
+            $table->text('description')->comment("รายละเอียดสินค้า");
             $table->string('image')->comment("รูปภาพสินค้า");
             $table->timestamps();
         });

@@ -50,13 +50,13 @@ https://templatemo.com/tm-580-woox-travel
       <div class="row">
         <div class="col-12">
           <nav class="main-nav">
-            <a href="{{route('welcome')}}" class="logo">
+            <a href="/" class="logo">
               <img src="{{asset('frontend/assets/images/logo.png')}}">
             </a>
             <ul class="nav">
-              <li><a href="{{route('welcome')}}">หน้าแรก</a></li>
+              <li><a href="/">หน้าแรก</a></li>
               <li><a href="{{route('about')}}" class="active">เกี่ยวกับเรา</a></li>
-              <li><a href="{{route('deals')}}">ร้านค้า</a></li>
+              <li><a href="/deals">ร้านค้า</a></li>
               <li><a href="{{route('login')}}">เข้าสู่ระบบ</a></li>
               <li><a href="{{route('register')}}">สมัครสมาชิก</a></li>
             </ul>

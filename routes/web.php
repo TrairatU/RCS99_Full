@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,14 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('welcome');
+Route::get('/', function() {
+    $product = Product::all();
+    return view('welcome', compact('product'));
+});
 
-Route::view('/deals', 'deals')->name('deals');
+Route::get('/deals', function() {
+    $product = Product::all();
+    return view('deals', compact('product'));
+});
 
 Route::view('/about', 'about')->name('about');
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $pro = Product::all();
+    $user = User::all();
+    return view('dashboard', compact('pro', 'user'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -39,3 +49,6 @@ Route::get('admin/product/create',[ProductController::class, 'create'])->name('a
 
 // Product
 Route::post('admin/product/insert',[ProductController::class, 'insertProduct'])->name('insertProduct');
+Route::get('admin/product/delete/{id}',[ProductController::class, 'delete']);
+Route::get('admin/product/edit/{id}',[ProductController::class, 'edit']);
+Route::post('admin/product/update/{id}',[ProductController::class, 'update']);

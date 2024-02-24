@@ -7,10 +7,10 @@
     <div class="app-brand demo">
         <a href="{{ route('dashboard') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
-                <img src="{{ asset('backend/assets/img/logoicon.png') }}" alt="">
+                <img src="{{ asset('backend/assets/img/logo.png') }}" alt="">
             </span>
-            <span class="app-brand-text demo menu-text fw-bolder ms-2">
-                IT Shop
+            <span class="demo fw-bolder ms-2">
+                RCS99 Shop
             </span>
         </a>
 
@@ -65,21 +65,28 @@
                     </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
+                    @foreach ($product as $pro)
                     <tr>
-                        <td>1</td>
-                        <td>iphone 14 Pro Max</td>
-                        <td>iphone.jpg</td>
-                        <td>45,990 บาท</td>
-                        <td>ผลิตโดยบริษัทแอปเปิ้ล</td>
-                        <td>2022-07-25 12:46:29</td>
-                        <td>2022-07-25 12:46:29</td>
+                        <td>{{ $product->firstItem() + $loop->index }}</td>
+                        <td>{{ $pro->name }}</td>
                         <td>
-                            <a href="#"><i class='bx bxs-edit'></i></a>
-                            <a href="#"><i class='bx bx-trash'></i></a>
+                            <img src="{{ asset('backend/upload/resize/'.$pro->image) }}" alt="">
+                        </td>
+                        <td>{{ $pro->price }}</td>
+                        <td>{{ $pro->description }}</td>
+                        <td>{{ $pro->created_at }}</td>
+                        <td>{{ $pro->updated_at }}</td>
+                        <td>
+                            <a href="{{ url('admin/product/edit/'.$pro->id) }}"><i class='bx bxs-edit'></i></a>
+                            <a href="{{ url('admin/product/delete/'.$pro->id) }}"><i class='bx bx-trash'></i></a>
                         </td>
                     </tr>
+                    @endforeach
                 </tbody>
             </table>
+            <div class="mt-3">
+                {{ $product->links('pagination::bootstrap-5') }}
+            </div>
         </div>
     </div>
 </div>

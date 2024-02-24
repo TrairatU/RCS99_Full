@@ -27,7 +27,7 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div>
-					<a class="txt2" href="{{route('welcome')}}">
+					<a class="txt2" href="/">
 						<i class="fa fa-long-arrow-left m-l-5" aria-hidden="true"></i>
 						กลับไปยังหน้าแรก
 					</a>
